@@ -5,7 +5,7 @@
 Raycasting is a rendering technique to create a 3D perspective in a 2D map. Back when computers were slower it wasn't possible to run real 3D engines in realtime, and raycasting was the first solution. Raycasting can go very fast, because only a calculation has to be done for every vertical line of the screen. The most well known game that used this technique, is of course Wolfenstein 3D.
 
 
-| ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/3847dda6-8944-4257-8845-7637926e2f63)  | ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/e48e9643-8088-40ed-b608-1e510519d914)  |
+| ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/dcf5dbd9-6185-4470-a68f-ca85acc4f028)  | ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/b3840a9a-f0a5-4516-8eb7-ccf16018eb09)  |
 |--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 
 > **Note:** Raycasting is not the same as raytracing! Raycasting is a fast semi-3D technique that works in realtime even on 4MHz graphical calculators, while raytracing is a realistic rendering technique that supports reflections and shadows in true 3D scenes, and only recently computers became fast enough to do it in realtime for reasonably high resolutions and complex scenes.
@@ -35,7 +35,7 @@ To calculate the distance between the player and the nearest wall, we can use th
 | Precision                                                           | Size of 'steps' taken every iteration                                 | 50                                                              |
 | Limit                                                               | Limit of the distance the player can view                             | 11                                                              |
 
-| ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/f2299509-10df-4e86-ae30-619b9a00f9d5) | ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/35bdb4be-fd38-40e2-af0e-af727b67c945) |
+| ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/ad61a1df-ace9-4795-8582-bccce62598ba) | ![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/a242f578-8909-410b-a1b8-8883b9b9e3b7) |
 |-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
 
 ### 2. From the the player's position incrementing the x's and y's coordinates of the ray.
@@ -49,7 +49,7 @@ ray.y += ray_cos;
 ```
 distance = sqrt(powf(x - pl.x - 0.5, 2.0) + powf(y - pl.y - 0.5, 2.0));
 ```
-![Screenshot from 2023-11-20 02-18-58](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/9afb814e-8425-477a-8d83-4800defe2721)
+![image](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/2af01239-dd3e-4723-91cc-c002af685e85)
 
 This algorith is repeated `window_width` times.<br>
 This distance is really helpful to calculate the height of the wall height:
