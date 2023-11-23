@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:51:21 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/20 14:08:54 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:42:41 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	cub_update(void *param)
 		{
 			update_anim(cub);
 		}
+		check_move(cub);
 		cub_raycast(cub);
 		mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->win_img.img, 0, 0);
 	}

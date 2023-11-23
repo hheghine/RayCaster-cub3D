@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:37:42 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/20 01:59:04 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:42:09 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,10 @@ void	cub_end(t_cub *cub)
 	destroy_images(cub);
 	mlx_destroy_display(cub->mlx_ptr);
 	free(cub->mlx_ptr);
+}
+
+int	cub_exit(void *param)
+{
+	cub_error(end, 1);
+	return (0);
 }

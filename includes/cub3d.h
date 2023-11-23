@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 23:53:37 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/20 01:58:03 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:46:05 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,19 @@ t_img			*get_texture(t_cub *cub);
 /* makes a list of textures to make a wall animation */
 t_list			*get_tex(t_img *img, t_list **anim, int n[0][2]);
 
+/* redraws the cub3d image */
 int				cub_update(void *param);
+
+/* checks keys pressed and changes the image as it should */
+void			check_move(t_cub *cub);
+
+/* checks the keyup events */
+int	cub_keyup(int key, t_cub *cub);
+
+/* checks the keydown events */
+int	cub_keydown(int key, t_cub *cub);
+
+/* ends the game */
+int				cub_exit(void *param);
 
 #endif

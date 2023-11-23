@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 23:10:02 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/13 18:38:51 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:48:30 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	cub_error(t_cub_err err, int flag)
 {
 	if (!flag)
 		return (0);
-	print_err();
+	if (err != end)
+		print_err();
 	write(2, "invalid number of arguments\n", 28 * (err == inv_argc));
 	write(2, "wrong file format\n", 18 * (err == inv_format));
 	write(2, "file is empty\n", 14 *(err == empty_file));
@@ -34,6 +35,8 @@ int	cub_error(t_cub_err err, int flag)
 	write(2, "invalid map character is detected\n", 34 * (err == inv_char));
 	if (err == inv_argc && ft_putchar_fd('\n', 2))
 		cub_usage(1);
+	if (err == end)
+		exit(0);
 	exit(1);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 23:13:57 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/16 22:35:00 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:47:02 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef enum e_cub_err
 	no_mem,
 	inv_wall,
 	inv_player,
-	inv_char
+	inv_char,
+	end
 }	t_cub_err;
 
 /* generates error messages */

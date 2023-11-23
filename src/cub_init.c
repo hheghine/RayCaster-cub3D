@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:21:11 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/19 18:55:40 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:43:46 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	full_init(t_cub *cub)
 	init_ray(cub);
 	// draw_ceiling_and_floor(cub);
 	cub_raycast(cub);
+	mlx_hook(cub->win_ptr, 02, 1L << 0, cub_keydown, cub);
+	mlx_hook(cub->win_ptr, 03, 1L << 1, cub_keyup, cub);
+	mlx_hook(cub->win_ptr, 17, 0, cub_exit, cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->win_img.img, 0, 0);
 	mlx_loop_hook(cub->mlx_ptr, cub_update, cub);
 	mlx_loop(cub->mlx_ptr);
