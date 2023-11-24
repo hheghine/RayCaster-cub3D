@@ -1,6 +1,9 @@
 # Cub3D
 *This project is inspired by the world-famous **Wolfenstein 3D** game.* <br>
 
+![Screencast from 2023-11-24 12-33-06](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/13e8cd1f-629a-472e-9c45-f2018890b942)
+
+
 ## Raycasting vs Raytracing
 Raycasting is a rendering technique to create a 3D perspective in a 2D map. Back when computers were slower it wasn't possible to run real 3D engines in realtime, and raycasting was the first solution. Raycasting can go very fast, because only a calculation has to be done for every vertical line of the screen. The most well known game that used this technique, is of course Wolfenstein 3D.
 
@@ -14,6 +17,7 @@ Raycasting is a rendering technique to create a 3D perspective in a 2D map. Back
 The ``cub3d`` executable receives as a single argument, the map file we read, which must be of ``.cub`` filetype.
 
 The file must follow these rules:
+
 - There must be header lines before the actual map containing the following:
     - At least a line containing ``NO``, ``SO``, ``EA`` and ``WE`` followed by a valid path to an xpm image
     - A line starting with ``F`` (**f**loor) or ``C`` (**c**eiling) followed by a color in RGB separated by commas
