@@ -1,7 +1,12 @@
 # Cub3D
-*This project is inspired by the world-famous **Wolfenstein 3D** game.* <br>
 
-![Screencast from 2023-11-24 12-33-06](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/13e8cd1f-629a-472e-9c45-f2018890b942)
+<p align="center">
+  <em>This project is inspired by the world-famous <strong>Wolfenstein 3D</strong> game.</em>
+</p>
+
+<div align=center>
+  <img src="https://github.com/hheghine/RayCaster-cub3D/assets/119530584/13e8cd1f-629a-472e-9c45-f2018890b942" alt="Wolfenstein 3D-inspired project" />
+</div>
 
 
 ## Raycasting vs Raytracing
