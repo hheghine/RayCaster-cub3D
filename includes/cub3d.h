@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 23:53:37 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/23 17:46:05 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:00:26 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,5 +200,8 @@ int	cub_keydown(int key, t_cub *cub);
 
 /* ends the game */
 int				cub_exit(void *param);
+
+/* inverts map colors */
+void			color_inverter(t_cub *cub);
 
 #endif

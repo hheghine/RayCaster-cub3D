@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 23:16:28 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/18 19:47:18 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/24 20:59:53 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,21 @@ int	get_shadow_color(int color, float ds, int tr)
 	if (c.b < 0)
 		c.b = 0;
 	return (color_trgb(c));
+}
+
+void	color_inverter(t_cub *cub)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < WIN_H)
+	{
+		y = -1;
+		while (++y < WIN_W)
+		{
+			my_mlx_pixel_put(&cub->win_img, y, x, 0xFFFFFF - \
+				my_mlx_pixel_get(&cub->win_img, y, x));
+		}
+	}
 }
