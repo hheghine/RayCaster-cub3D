@@ -7,7 +7,18 @@
 <div align=center>
   <img src="https://github.com/hheghine/RayCaster-cub3D/assets/119530584/d2126acf-8542-494b-b8af-08ba61a49115" alt="Wolfenstein 3D-inspired project" />
 </div>
+<br>
+<p align="center">
+  <em>The goal is to make a dynamic view inside a maze, in which you’ll have to find your way.</em>
+</p>
 
+
+---
+
+| ![Wall](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/2e73c4e4-4dbd-4647-8fcf-b8f950e76292) | ![Negative](https://github.com/hheghine/RayCaster-cub3D/assets/119530584/f071c47f-0718-4c54-b701-60ec5071d379) |
+|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+
+---
 
 ## Raycasting vs Raytracing
 Raycasting is a rendering technique to create a 3D perspective in a 2D map. Back when computers were slower it wasn't possible to run real 3D engines in realtime, and raycasting was the first solution. Raycasting can go very fast, because only a calculation has to be done for every vertical line of the screen. The most well known game that used this technique, is of course Wolfenstein 3D.
@@ -65,5 +76,7 @@ This distance is really helpful to calculate the height of the wall height:
 ```
 wall_height = (window_height / (1.5 * distance));
 ```
+
+
 
 
