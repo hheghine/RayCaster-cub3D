@@ -89,4 +89,6 @@ int		ft_charcount(char *str, char c);
 char	**ft_split_once(char *str, int c);
 int		ft_strrncmp(const char *s1, const char *s2, size_t n);
 
+int		ft_isdigit_str(char *str);
+
 #endif

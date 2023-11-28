@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:47:40 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/18 21:17:09 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:50:30 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	init_ray(t_cub *cub)
 		cub->ray.angle = 180;
 	else if (cub->pl.dir == 'N')
 		cub->ray.angle = 270;
-	cub->ray.angle = 0;
+	else
+		cub->ray.angle = 0;
 	cub->ray.hfov = 30;
 	cub->ray.incr_angle = 2 * cub->ray.hfov / WIN_W;
 	cub->ray.precision = 50;

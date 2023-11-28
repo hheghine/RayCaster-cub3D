@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 23:53:37 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/24 21:00:26 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:53:43 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ void			check_map(t_cub *cub);
 
 /* checks the map characters */
 void			check_elem(t_cub *cub);
+
+/* checks and retrieves floor and ceiling colors from map */
+char	**check_map_rgb(t_cub *cub, char **cf, char *str);
 
 /* reads file with gnl */
 void			read_map(char *file, t_cub *cub);

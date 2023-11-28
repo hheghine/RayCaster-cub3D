@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 23:16:28 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/24 20:59:53 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:35:28 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ void	get_cf_colors(t_cub *cub, char **str)
 	c.t = 0;
 	tex[0] = !ft_strncmp(str[0], "F", 2);
 	tex[1] = !ft_strncmp(str[0], "C", 2);
-	cf = ft_split(str[1], ',');
+	cf = check_map_rgb(cub, cf, str[1]);
+	// cf = ft_split(str[1], ',');
 	if (!cf || ft_matrixlen(cf) != 3)
 	{
 		ft_free_matrix(&cf);
-		return ;
+		cub_error(inv_map, 1);
 	}
+	// for (int j = 0; j < 3; j++)
+	// 	printf("color: %s\n", cf[j]);
 	color[0] = color_atoi(cf[0], &c.r);
 	color[1] = color_atoi(cf[1], &c.g);
 	color[2] = color_atoi(cf[2], &c.b);

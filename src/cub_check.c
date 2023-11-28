@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 23:05:02 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/16 22:06:07 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:37:04 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,35 @@ void	check_map(t_cub *cub)
 	}
 	check_elem(cub);
 	cub_error(inv_map, !i[0]);
+}
+
+char	**check_map_rgb(t_cub *cub, char **cf, char *str)
+{
+	int	i;
+	int	counter;
+
+	counter = 0;
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == ',')
+			counter++;
+	}
+	if (counter > 2)
+		return (NULL);
+	cf = ft_split(str, ',');
+	if (!cf || ft_matrixlen(cf) != 3)
+	{
+		ft_free_matrix(&cf);
+		return (NULL);
+	}
+	for (int i = 0; cf[i]; i++)
+	{
+		if (!ft_isdigit_str(cf[i]))
+		{
+			ft_free_matrix(&cf);
+			return(NULL);
+		}
+	}
+	return (cf);
 }
