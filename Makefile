@@ -6,31 +6,42 @@
 #    By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 16:56:46 by hbalasan          #+#    #+#              #
-#    Updated: 2023/11/15 21:31:18 by hbalasan         ###   ########.fr        #
+#    Updated: 2023/11/29 21:29:36 by hbalasan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= cub3d
+NAME			=	cub3d
 
-PURPLE			:= \033[0;34m
-PINK			:= \033[0;35m
-RESET			:= \033[0m
+PURPLE			:=	\033[0;34m
+PINK			:=	\033[0;35m
+RESET			:=	\033[0m
 
-SRC_DIR			= src
-SRCS			= $(wildcard $(SRC_DIR)/*.c)
-HEADER			= $(wildcard includes/*.h)
-OBJ_DIR			= obj
-OBJS			= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
-INCS			= -I
-CFLAGS			= -fsanitize=address -g #-Wall -Wextra -Werror -
+END				=	src/cub_end_macos.c
 
-MINILIBX		= ./libraries/minilibx-macos
-FMS				= -L $(MINILIBX) -framework OpenGL -framework AppKit -lmlx -lm 
+ifeq ($(shell uname -s), Linux)
+	END = src/cub_end_linux.c
+endif
 
-LIBFT			= ./libraries/libft/libft.a
-LIBFT_PATH		= ./libraries/libft
+SRC_DIR			=	src
+SRCS			=	src/main.c src/cub_check.c src/cub_color.c src/cub_draw.c \
+					src/cub_error.c src/cub_init.c src/cub_keys.c src/cub_map_check.c \
+					src/cub_map_read.c src/cub_mlx.c src/cub_move.c src/cub_raycast.c \
+					src/cub_texture.c src/cub_update.c src/cub_utils.c \
+					src/get_next_line.c src/get_next_line_utils.c $(END)
 
-PRINTF			= printf
+HEADER			=	$(wildcard includes/*.h)
+OBJ_DIR			=	obj
+OBJS			=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
+INCS			=	-I
+CFLAGS			=	-fsanitize=address -g #-Wall -Wextra -Werror -
+
+MINILIBX		=	./libraries/minilibx-macos
+FMS				=	-L $(MINILIBX) -framework OpenGL -framework AppKit -lmlx -lm 
+
+LIBFT			=	./libraries/libft/libft.a
+LIBFT_PATH		=	./libraries/libft
+
+PRINTF			=	printf
 
 ifeq ($(shell uname -s), Linux)
 	MINILIBX = ./libraries/minilibx-linux
