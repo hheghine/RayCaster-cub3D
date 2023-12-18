@@ -6,7 +6,7 @@
 #    By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 16:56:46 by hbalasan          #+#    #+#              #
-#    Updated: 2023/11/29 21:29:36 by hbalasan         ###   ########.fr        #
+#    Updated: 2023/12/18 20:13:24 by hbalasan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) Makefile | $(OBJ_DIR)
 	@$(PRINTF) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(PURPLE)$<$(RESET)..." "" $(CURRENT_SRC) $(TOTAL_SRC) $(SRC_PCT)
 	@$(CC) $(CFLAGS) $(INCS)$(MINILIBX) -c $< -o $@
 
-all:	mlx ${NAME}
+all:	mlx libft_compile ${NAME}
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
@@ -74,6 +74,16 @@ mlx:
 		sleep 0.5; \
 	done
 	@echo "$(PURPLE) Minilibx compiled.$(RESET)"
+
+libft_compile:
+				@echo "$(PURPLE)Compiling Libft: "
+				@$(MAKE) -C $(LIBFT_PATH) > /dev/null 2>&1 & \
+				pid=$$!; \
+				while ps -p $$pid > /dev/null; do \
+					printf "$(PINK)✧$(RESET)"; \
+					sleep 0.5; \
+				done; \
+				echo "$(PURPLE) Libft compiled.$(RESET)"
 
 ${NAME}: $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FMS) -o ${NAME} > /dev/null 2>&1
