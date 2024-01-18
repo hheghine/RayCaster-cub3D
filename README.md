@@ -5,7 +5,7 @@
 </p>
 
 <div align=center>
-  <img src="https://github.com/hheghine/RayCaster-cub3D/assets/119530584/d2126acf-8542-494b-b8af-08ba61a49115" alt="Wolfenstein 3D-inspired project" />
+  <img src="https://github.com/hheghine/RayCaster-cub3D/assets/119530584/f7c00724-f866-4f6b-bc48-c8276ad06471" alt="Wolfenstein 3D-inspired project" />
 </div>
 <br>
 <p align="center">
