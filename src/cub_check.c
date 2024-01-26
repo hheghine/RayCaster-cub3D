@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 23:05:02 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/28 19:37:04 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/26 19:38:21 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ void	check_map(t_cub *cub)
 {
 	int	i[2];
 	int	w;
-	
+
 	i[0] = -1;
 	while (++i[0] < cub->height)
 	{
+		// printf ("'%d'\n", cub->map[i[0]][0]);
+		char	*trim = ft_strtrim(cub->map[i[0]], " ");
+		if (!*trim)
+			cub_error(inv_map, 1);
+		free(trim);
 		w = ft_strlen(cub->map[i[0]]) - 1;
 		i[1] = 0;
 		while (cub->map[i[0]][i[1]] == ' ' && i[1] <= w)

@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 23:10:02 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/23 14:48:30 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:24:51 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	cub_error(t_cub_err err, int flag)
 	write(2, "invalid map character is detected\n", 34 * (err == inv_char));
 	if (err == inv_argc && ft_putchar_fd('\n', 2))
 		cub_usage(1);
+	// system("leaks cub3d");
 	if (err == end)
 		exit(0);
 	exit(1);

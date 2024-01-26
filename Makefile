@@ -6,7 +6,7 @@
 #    By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 16:56:46 by hbalasan          #+#    #+#              #
-#    Updated: 2023/12/18 20:13:24 by hbalasan         ###   ########.fr        #
+#    Updated: 2024/01/26 17:24:15 by hbalasan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ HEADER			=	$(wildcard includes/*.h)
 OBJ_DIR			=	obj
 OBJS			=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 INCS			=	-I
-CFLAGS			=	-fsanitize=address -g #-Wall -Wextra -Werror -
+CFLAGS			=	#-fsanitize=address -g #-Wall -Wextra -Werror -
 
 MINILIBX		=	./libraries/minilibx-macos
 FMS				=	-L $(MINILIBX) -framework OpenGL -framework AppKit -lmlx -lm 

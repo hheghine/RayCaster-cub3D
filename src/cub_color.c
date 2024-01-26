@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 23:16:28 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/28 19:35:28 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:32:04 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	get_cf_colors(t_cub *cub, char **str)
 	color[1] = color_atoi(cf[1], &c.g);
 	color[2] = color_atoi(cf[2], &c.b);
 	ft_free_matrix(&cf);
+	if (color[0] == -1 || color[1] == -1 || color[2] == -1)
+		cub_error(inv_tex, 1);
 	if (color[0] || color[1] || color[2])
 		return ;
 	if (tex[0])
