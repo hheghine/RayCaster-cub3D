@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 20:54:46 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/29 20:56:18 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:29:33 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	destroy_images(t_cub *cub)
 		mlx_destroy_image(cub->mlx_ptr, cub->win_img.img);
 	if (cub->win_ptr)
 		mlx_destroy_window(cub->mlx_ptr, cub->win_ptr);
+	if (cub->minimap.img)
+		mlx_destroy_image(cub->mlx_ptr, cub->minimap.img);
+	if (cub->miniview.img)
+		mlx_destroy_image(cub->mlx_ptr, cub->miniview.img);
 	free(cub->tex.b);
 }
 

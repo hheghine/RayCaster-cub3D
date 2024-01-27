@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 21:40:35 by hbalasan          #+#    #+#             */
-/*   Updated: 2024/01/26 17:53:50 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:38:28 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	init_sprites(t_cub *cub)
 {
 	cub->win_img.img = NULL;
+	cub->minimap.img = NULL;
+	cub->miniview.img = NULL;
 	cub->tex.n = NULL;
 	cub->tex.n_bak = NULL;
 	cub->tex.s = NULL;
@@ -48,6 +50,7 @@ static t_cub	cub_init(void)
 	cub.pl.speed = 0.12;
 	ft_bzero(&cub.pl.keys, sizeof(t_key));
 	cub.neg = -1;
+	cub.mmap = -1;
 	cub.rate = 30;
 	return (cub);
 }

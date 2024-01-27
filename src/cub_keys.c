@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:43:20 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/23 17:46:49 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:38:59 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	cub_keyup(int key, t_cub *cub)
 {
 	if (key == KEY_R)
 		cub->neg *= -1;
+	else if (key == KEY_M)
+		cub->mmap *= -1;
 	else if (key == KEY_LEFT)
 		cub->pl.keys.left_pressed = 0;
 	else if (key == KEY_RIGHT)

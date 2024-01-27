@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/12 16:56:46 by hbalasan          #+#    #+#              #
-#    Updated: 2024/01/26 17:24:15 by hbalasan         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME			=	cub3d
 
 PURPLE			:=	\033[0;34m
@@ -27,13 +15,13 @@ SRCS			=	src/main.c src/cub_check.c src/cub_color.c src/cub_draw.c \
 					src/cub_error.c src/cub_init.c src/cub_keys.c src/cub_map_check.c \
 					src/cub_map_read.c src/cub_mlx.c src/cub_move.c src/cub_raycast.c \
 					src/cub_texture.c src/cub_update.c src/cub_utils.c \
-					src/get_next_line.c src/get_next_line_utils.c $(END)
+					src/get_next_line.c src/get_next_line_utils.c src/cub_minimap.c $(END)
 
 HEADER			=	$(wildcard includes/*.h)
 OBJ_DIR			=	obj
 OBJS			=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 INCS			=	-I
-CFLAGS			=	#-fsanitize=address -g #-Wall -Wextra -Werror -
+CFLAGS			=	-fsanitize=address -g #-Wall -Wextra -Werror -
 
 MINILIBX		=	./libraries/minilibx-macos
 FMS				=	-L $(MINILIBX) -framework OpenGL -framework AppKit -lmlx -lm 
@@ -76,27 +64,50 @@ mlx:
 	@echo "$(PURPLE) Minilibx compiled.$(RESET)"
 
 libft_compile:
-				@echo "$(PURPLE)Compiling Libft: "
-				@$(MAKE) -C $(LIBFT_PATH) > /dev/null 2>&1 & \
-				pid=$$!; \
-				while ps -p $$pid > /dev/null; do \
-					printf "$(PINK)✧$(RESET)"; \
-					sleep 0.5; \
-				done; \
-				echo "$(PURPLE) Libft compiled.$(RESET)"
+	@$(PRINTF) "$(PURPLE)Compiling Libft: "
+	@make -C $(LIBFT_PATH) > /dev/null 2>&1 & i=0; \
+	while ps -p $$! > /dev/null; do \
+		$(PRINTF) "$(PINK)✧$(RESET)"; \
+		sleep 0.5; \
+	done
+	@echo "$(PURPLE) Libft compiled.$(RESET)"
+
+usage_table:
+	@echo "$(PURPLE)---------------------------------------------------------------$(RESET)"
+	@echo "$(PURPLE)| Usage               | ./cub -h or ./cub --help              |$(RESET)"
+	@echo "$(PURPLE)|_____________________|_______________________________________|$(RESET)"
+	@echo "$(PURPLE)| Recommended Maps    | maps/simple.cub                       |$(RESET)"
+	@echo "$(PURPLE)|                     | maps/torch.cub                        |$(RESET)"
+	@echo "$(PURPLE)|                     | maps/pac.cub                          |$(RESET)"
+	@echo "$(PURPLE)|                     | maps/star_wars.cub                    |$(RESET)"
+	@echo "$(PURPLE)|_____________________|_______________________________________|$(RESET)"
+	@echo "$(PURPLE)| Controls            | W/S   - Walk front/back               |$(RESET)"
+	@echo "$(PURPLE)|                     | A/D   - Walk left/right               |$(RESET)"
+	@echo "$(PURPLE)|                     | ←/→   - Change view                   |$(RESET)"
+	@echo "$(PURPLE)|                     | M     - Toggle minimap                |$(RESET)"
+	@echo "$(PURPLE)|                     | R     - Toggle negative colors        |$(RESET)"
+	@echo "$(PURPLE)|_____________________|_______________________________________|$(RESET)"
+	@echo ""
+
+.PHONY: usage_table
 
 ${NAME}: $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FMS) -o ${NAME} > /dev/null 2>&1
 	@$(PRINTF) "\r%100s\r$(PINK)✧ $(PURPLE)cub3D $(PINK)successfully compiled! ✧$(RESET)\n"
+	@$(MAKE) --no-print-directory usage_table
 
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make clean -C $(MINILIBX) > /dev/null 2>&1
+	@make clean -C $(LIBFT_PATH) > /dev/null 2>&1
+	@$(PRINTF) "\r%100s\r$(PINK)✧ Minilibx successfully cleaned! ✧$(RESET)\n"
+	@$(PRINTF) "\r%100s\r$(PINK)✧ Libft successfully cleaned! ✧$(RESET)\n"
 	@$(PRINTF) "\r%100s\r$(PINK)✧ $(PURPLE)cub3D $(PINK)successfully cleaned! ✧$(RESET)\n"
 
 fclean: clean
 	@rm -f ${NAME}
+	@make fclean -C $(LIBFT_PATH) > /dev/null 2>&1
 
 re: fclean all
 
-.PHONY: all clean fclean mlx
+.PHONY: all clean fclean mlx libft_compile

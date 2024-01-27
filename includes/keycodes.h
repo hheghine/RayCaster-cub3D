@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:56:06 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/11 20:58:10 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:33:58 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #  define KEY_E 101
 #  define KEY_Q 113
 #  define KEY_R 114
+#  define KEY_M 109
 #  define KEY_ESC 65307
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
@@ -35,6 +36,7 @@
 #  define KEY_S 1
 #  define KEY_D 2
 #  define KEY_E 14
+#  define KEY_M 46
 #  define KEY_UP 126
 #  define KEY_DOWN 125
 #  define KEY_LEFT 123

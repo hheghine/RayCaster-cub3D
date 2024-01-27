@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 23:53:37 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/28 18:53:43 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/28 00:31:42 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # endif
 
 # ifndef SIZE
-#  define SIZE 7
+#  define SIZE 8
 # endif
 
 # ifndef RAD
@@ -108,17 +108,20 @@ typedef struct s_cub
 	int			width;
 	int			rate;
 	int			neg;
+	int			mmap;
 	long		frames;
 	t_tex		tex;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		win_img;
+	t_img		win_r;
+	t_img		minimap;
+	t_img		miniview;
 	t_player	pl;
 	t_ray		ray;
 	float		x;
 	float		y;
 }	t_cub;
-
 
 /* checks the input file */
 void			check_file(int argc, char **argv);
@@ -206,5 +209,13 @@ int				cub_exit(void *param);
 
 /* inverts map colors */
 void			color_inverter(t_cub *cub);
+
+void	cub_minimap(t_cub *g);
+int	get_minimap_color(t_cub *g, int len, int x, int y);
+void	cub_miniview(t_cub *g);
+t_vector	ft_newvector(int x, int y);
+void	my_mlx_area_put(t_img *d, t_vector p, t_vector dim, int c);
+void	mlx_img_to_img(int p[2], t_img img[2], int c1);
+
 
 #endif

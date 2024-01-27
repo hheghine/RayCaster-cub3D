@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:59:37 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/18 15:31:07 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/28 00:46:35 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,43 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	my_mlx_area_put(t_img *d, t_vector p, t_vector dim, int c)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < dim.y)
+	{
+		x = -1;
+		while (++x < dim.x)
+			my_mlx_pixel_put(d, p.x + x, p.y + y, c);
+	}
+}
+
+void	mlx_img_to_img(int p[2], t_img img[2], int c1)
+{
+	int	x;
+	int	y;
+	int	color;
+
+	x = -1;
+	while (++x < img[0].height)
+	{
+		y = -1;
+		while (++y < img[0].width)
+		{
+			if (y + p[0] >= 0 && x + p[1] >= 0)
+			{
+				color = my_mlx_pixel_get(&img[0], y, x);
+				if (color != c1)
+					my_mlx_pixel_put(&img[1], y + p[0], \
+						x + p[1], color);
+			}
+		}
+	}
 }
 
 unsigned int	my_mlx_pixel_get(t_img *data, int x, int y)

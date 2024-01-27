@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 20:21:11 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/23 17:43:46 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:29:20 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ void	my_mlx_init(t_cub *cub)
 	cub->win_img.img = mlx_new_image(cub->mlx_ptr, WIN_W, WIN_H);
 	cub->win_img.addr = mlx_get_data_addr(cub->win_img.img, &cub->win_img.bpp, \
 		&cub->win_img.line_len, &cub->win_img.endian);
+	cub->minimap.img = mlx_new_image(cub->mlx_ptr, cub->width * SIZE, \
+		cub->height * SIZE);
+	cub->minimap.addr = mlx_get_data_addr(cub->minimap.img, &cub->minimap.bpp, \
+		&cub->minimap.line_len, &cub->minimap.endian);
+	cub->miniview.img = mlx_new_image(cub->mlx_ptr, 30 * SIZE, 15 * SIZE);
+	cub->miniview.addr = mlx_get_data_addr(cub->miniview.img, &cub->miniview.bpp, \
+		&cub->miniview.line_len, &cub->miniview.endian);
+	cub->miniview.width = 30 * SIZE;
+	cub->miniview.height = 15 * SIZE;
 }
 
 void	full_init(t_cub *cub)

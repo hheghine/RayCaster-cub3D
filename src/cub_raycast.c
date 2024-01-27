@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:47:40 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/11/28 18:50:30 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/28 01:14:07 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,13 @@ float	wall_distance(t_cub *cub, float ray_angle)
 	{
 		cub->x += cub->ray.sin;
 		cub->y += cub->ray.cos;
+		if (ray_angle - 1 < cub->ray.angle && ray_angle + 1 > cub->ray.angle)
+			my_mlx_pixel_put(&cub->minimap, cub->y * SIZE, cub->x * SIZE, 0x0000FF00);
+		else
+			my_mlx_pixel_put(&cub->minimap, cub->y * SIZE, cub->x * SIZE, 0x00CC66FF);
 	}
+	my_mlx_area_put(&cub->minimap, ft_newvector((int)(cub->pl.y + 0.5) * SIZE, \
+		(int)(cub->pl.x + 0.5) * SIZE), ft_newvector(SIZE, SIZE), 0x00CC3366);
 	dist = sqrt(powf(cub->x - cub->pl.x - 0.5, 2.) + powf(cub->y - cub->pl.y - 0.5, 2.)); // Euclidean distance formula
 	return (dist * cos(degree_to_radians(ray_angle - cub->ray.angle)));
 }
