@@ -20,31 +20,6 @@
 
 ---
 
-## Usage
-
-```
-git clone git@github.com:hheghine/RayCaster-cub3D.git && make
-
-Compiling Minilibx: ✧✧✧✧✧ Minilibx compiled.
-Compiling Libft: ✧✧✧✧ Libft compiled.
-✧ cub3D successfully compiled! ✧                                                                    
----------------------------------------------------------------
-| Usage               | ./cub -h or ./cub --help              |
-|_____________________|_______________________________________|
-| Recommended Maps    | maps/simple.cub                       |
-|                     | maps/torch.cub                        |
-|                     | maps/pac.cub                          |
-|                     | maps/star_wars.cub                    |
-|_____________________|_______________________________________|
-| Controls            | W/S   - Walk front/back               |
-|                     | A/D   - Walk left/right               |
-|                     | ←/→   - Change view                   |
-|                     | M     - Toggle minimap                |
-|                     | R     - Toggle negative colors        |
-|_____________________|_______________________________________|
-```
----
-
 ## Raycasting vs Raytracing
 Raycasting is a rendering technique to create a 3D perspective in a 2D map. Back when computers were slower it wasn't possible to run real 3D engines in realtime, and raycasting was the first solution. Raycasting can go very fast, because only a calculation has to be done for every vertical line of the screen. The most well known game that used this technique, is of course Wolfenstein 3D.
 

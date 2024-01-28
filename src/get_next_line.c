@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:20:55 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/07/17 20:05:51 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/29 00:53:23 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_get_remainder(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	rmndr = (char *)malloc(sizeof(char) * (ft_strlen(buffer) - i + 1));
+	rmndr = (char *)malloc(sizeof(char) * (gnl_strlen(buffer) - i + 1));
 	if (!rmndr)
 		return (NULL);
 	i++;
@@ -70,7 +70,7 @@ char	*ft_read_and_save(int fd, char *buffer)
 
 	*buff = 0;
 	byte_read = 1;
-	while (!ft_strchr(buff, '\n') && byte_read > 0)
+	while (!gnl_strchr(buff, '\n') && byte_read > 0)
 	{
 		byte_read = read(fd, buff, BUFFER_SIZE);
 		if (byte_read < 0)
@@ -81,9 +81,9 @@ char	*ft_read_and_save(int fd, char *buffer)
 		}
 		buff[byte_read] = '\0';
 		if (!buffer)
-			buffer = ft_strdup(buff);
+			buffer = gnl_strdup(buff);
 		else
-			buffer = ft_strjoin(buffer, buff);
+			buffer = gnl_strjoin(buffer, buff);
 	}
 	return (buffer);
 }

@@ -97,5 +97,6 @@ int			ft_strrncmp(const char *s1, const char *s2, size_t n);
 
 int			ft_isdigit_str(char *str);
 t_vector	ft_newvector(int x, int y);
+char		*ft_remove_char(char *str, char c);
 
 #endif

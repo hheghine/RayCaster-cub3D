@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:52:16 by hbalasan          #+#    #+#             */
-/*   Updated: 2024/01/26 17:52:02 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/01/29 01:24:31 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ void	check_walls(t_cub *cub, char **map, int i, int j)
 	if (i - 1 >= 0 && i - 1 < cub->height)
 	{
 		if (j - 1 >= 0 && j - 1 < (int)ft_strlen(map[i - 1]))
-			cub_error(inv_wall, map[i - 1][j - 1] == '0');
+			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j - 1], "0NSEW") != -1);
 		if (j + 1 >= 0 && j + 1 < (int)ft_strlen(map[i - 1]))
-			cub_error(inv_wall, map[i - 1][j + 1] == '0');
+			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j + 1], "0NSEW") != -1);
 		if (j >= 0 && j < (int)ft_strlen(map[i - 1]))
-			cub_error(inv_wall, map[i - 1][j] == '0');
+			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j], "0NSEW") != -1);
 	}
 	if (j - 1 >= 0 && j - 1 < (int)ft_strlen(map[i]))
-		cub_error(inv_wall, map[i][j - 1] == '0');
+		cub_error(inv_wall, ft_strchr_set(&map[i][j - 1], "0NSEW") != -1);
 	if (j + 1 >= 0 && j + 1 < (int)ft_strlen(map[i]))
-		cub_error(inv_wall, map[i][j + 1] == '0');
+		cub_error(inv_wall, ft_strchr_set(&map[i][j + 1], "0NSEW") != -1);
 	if (i + 1 >= 0 && i + 1 < cub->height)
 	{
 		if (j - 1 >= 0 && j - 1 < (int)ft_strlen(map[i + 1]))
-			cub_error(inv_wall, map[i + 1][j - 1] == '0');
+			cub_error(inv_wall, ft_strchr_set(&map[i + 1][j - 1], "0NSEW") != -1);
 		if (j + 1 >= 0 && j + 1 < (int)ft_strlen(map[i + 1]))
-			cub_error(inv_wall, map[i + 1][j + 1] == '0');
+			cub_error(inv_wall, ft_strchr_set(&map[i + 1][j + 1], "0NSEW") != -1);
 		if (j >= 0 && j < (int)ft_strlen(map[i + 1]))
 			cub_error(inv_wall, map[i + 1][j] == '0');
 	}
