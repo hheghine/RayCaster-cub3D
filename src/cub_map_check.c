@@ -6,36 +6,73 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:52:16 by hbalasan          #+#    #+#             */
-/*   Updated: 2024/01/29 01:24:31 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:22:40 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	check_walls(t_cub *cub, char **map, int i, int j)
+void	check_walls_2(t_cub *cub, char **map, int i, int j)
 {
+	printf("i: %d, j: %d '%c'\n", i, j, map[i][j]);
 	if (i - 1 >= 0 && i - 1 < cub->height)
 	{
+		printf("stex\n");
 		if (j - 1 >= 0 && j - 1 < (int)ft_strlen(map[i - 1]))
-			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j - 1], "0NSEW") != -1);
+		{
+		printf("stex '%c'\n", map[i - 1][j - 1]);
+			
+			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j - 1], "NSEW") != -1);
+		}
 		if (j + 1 >= 0 && j + 1 < (int)ft_strlen(map[i - 1]))
-			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j + 1], "0NSEW") != -1);
+		{
+		printf("stex1\n");
+
+			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j + 1], "NSEW") != -1);
+		}
 		if (j >= 0 && j < (int)ft_strlen(map[i - 1]))
-			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j], "0NSEW") != -1);
+			cub_error(inv_wall, ft_strchr_set(&map[i - 1][j], "NSEW") != -1);
 	}
 	if (j - 1 >= 0 && j - 1 < (int)ft_strlen(map[i]))
-		cub_error(inv_wall, ft_strchr_set(&map[i][j - 1], "0NSEW") != -1);
+		cub_error(inv_wall, ft_strchr_set(&map[i][j - 1], "NSEW") != -1);
 	if (j + 1 >= 0 && j + 1 < (int)ft_strlen(map[i]))
-		cub_error(inv_wall, ft_strchr_set(&map[i][j + 1], "0NSEW") != -1);
+		cub_error(inv_wall, ft_strchr_set(&map[i][j + 1], "NSEW") != -1);
 	if (i + 1 >= 0 && i + 1 < cub->height)
 	{
 		if (j - 1 >= 0 && j - 1 < (int)ft_strlen(map[i + 1]))
-			cub_error(inv_wall, ft_strchr_set(&map[i + 1][j - 1], "0NSEW") != -1);
+			cub_error(inv_wall, ft_strchr_set(&map[i + 1][j - 1], "NSEW") != -1);
 		if (j + 1 >= 0 && j + 1 < (int)ft_strlen(map[i + 1]))
-			cub_error(inv_wall, ft_strchr_set(&map[i + 1][j + 1], "0NSEW") != -1);
+			cub_error(inv_wall, ft_strchr_set(&map[i + 1][j + 1], "NSEW") != -1);
 		if (j >= 0 && j < (int)ft_strlen(map[i + 1]))
 			cub_error(inv_wall, map[i + 1][j] == '0');
 	}
+}
+
+void	check_walls(t_cub *c, char **map, int j, int i)
+{
+	if (j - 1 >= 0 && j - 1 < c->height)
+	{
+		if (i - 1 >= 0 && i - 1 < (int)ft_strlen(map[j - 1]))
+			cub_error(inv_wall, map[j - 1][i - 1] == '0');
+		if (i + 1 >= 0 && i + 1 < (int)ft_strlen(map[j - 1]))
+			cub_error(inv_wall, map[j - 1][i + 1] == '0');
+		if (i >= 0 && i < (int)ft_strlen(map[j - 1]))
+			cub_error(inv_wall, map[j - 1][i] == '0');
+	}
+	if (i - 1 >= 0 && i - 1 < (int)ft_strlen(map[j]))
+		cub_error(inv_wall, map[j][i - 1] == '0');
+	if (i + 1 >= 0 && i + 1 < (int)ft_strlen(map[j]))
+		cub_error(inv_wall, map[j][i + 1] == '0');
+	if (j + 1 >= 0 && j + 1 < c->height)
+	{
+		if (i - 1 >= 0 && i - 1 < (int)ft_strlen(map[j + 1]))
+			cub_error(inv_wall, map[j + 1][i - 1] == '0');
+		if (i + 1 >= 0 && i + 1 < (int)ft_strlen(map[j + 1]))
+			cub_error(inv_wall, map[j + 1][i + 1] == '0');
+		if (i >= 0 && i < (int)ft_strlen(map[j + 1]))
+			cub_error(inv_wall, map[j + 1][i] == '0');
+	}
+	check_walls_2(c, map, j, i);
 }
 
 void	check_elements(t_cub *cub, char **map, int i, int j)
@@ -95,5 +132,11 @@ char	**make_map(t_cub *cub)
 		temp[i][j] = '\0';
 	}
 	temp[i] = NULL;
+	// for (int i = 0; i < cub->height; i++)
+	// {
+	// 	for (int j = 0; j < cub->width; j++)
+	// 		printf("%c", temp[i][j]);
+	// 	printf("\n");
+	// }
 	return (temp);
 }
