@@ -6,7 +6,7 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 01:05:59 by hbalasan          #+#    #+#             */
-/*   Updated: 2024/01/26 17:50:21 by hbalasan         ###   ########.fr       */
+/*   Updated: 2024/02/16 01:30:30 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_textures(char	*line, t_cub *c, int n[0][2])
 		free(line);
 		cub_error(no_mem, 1);
 	}
-	if (!*dir ||!*(dir + 1))
+	if (!*dir || !*(dir + 1))
 	{
 		free(line);
 		cub_error(inv_tex, 1);
@@ -55,9 +55,9 @@ void	check_cf(char *line, int n[0][2])
 	aux = ft_split(line, ' ');
 	if (!aux)
 		cub_error(no_mem, 1);
-	if (!ft_strncmp(aux[0], "C", 2))
+	if (aux[0] && !ft_strncmp(aux[0], "C", 2))
 		(*n)[0] ++;
-	else if (!ft_strncmp(aux[0], "F", 2))
+	else if (aux[0] && !ft_strncmp(aux[0], "F", 2))
 		(*n)[1] ++;
 	if ((*n)[0] > 1 || (*n)[1] > 1)
 		cub_error(inv_tex, 1);
@@ -66,7 +66,7 @@ void	check_cf(char *line, int n[0][2])
 
 void	read_map(char *file, t_cub *cub)
 {
-	char	*line[2];
+	char	*line[3];
 	int		i[2];
 	int		n[2];
 
@@ -82,7 +82,17 @@ void	read_map(char *file, t_cub *cub)
 		if (!line[0])
 			break ;
 		line[1] = ft_strtrim(line[0], "\n");
+		line[2] = ft_strtrim(line[1], " ");
 		free(line[0]);
+		if (!line[2] || !*(line[2]))
+		{
+			if (line[1])
+				free(line[1]);
+			if (line[2])
+				free(line[2]);
+			continue;
+		}
+		free(line[2]);
 		if (line[1] && line[1][0] && ++i[0] < 6)
 		{
 			check_cf(line[1], &n);

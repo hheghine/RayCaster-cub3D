@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_map_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmnatsak <tmnatsak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:52:16 by hbalasan          #+#    #+#             */
-/*   Updated: 2024/02/15 15:05:33 by tmnatsak         ###   ########.fr       */
+/*   Updated: 2024/02/16 00:13:49 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void check_elem(t_cub* cub) {
     while (++i < cub->height) {
         j = -1;
         while (++j < cub->width) {
-            if (cub->map[i][j] == ' ')
+            if (j == (int)ft_strlen(cub->map[i]) && ft_strchr_set(&cub->map[i][j], "NSEW") != -1)
+                cub_error(inv_wall, 1);
+            else if (cub->map[i][j] == ' ')
                 check_walls(cub, cub->map, i, j);
             else
                 check_elements(cub, cub->map, i, j);
